@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ffmpeg
+  labels:
+    app: ffmpeg
+spec:
+  containers:
+  - image: robinhoodis/ffmpeg:0.0.1
+    command:
+      - "sleep"
+      - "604800"
+    imagePullPolicy: Always
+    name: ffmpeg
+  restartPolicy: Always
