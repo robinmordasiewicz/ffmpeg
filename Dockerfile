@@ -33,4 +33,4 @@ RUN apt-get -y install nodejs
 #RUN dpkg --configure -a
 RUN npm install -g gl --unsafe-perm=true --allow-root
 RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
-##RUN npm install --save ffmpeg-concat --unsafe-perm=true --allow-root
+RUN npm install --save ffmpeg-concat --unsafe-perm=true --allow-root
