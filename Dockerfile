@@ -22,7 +22,7 @@ RUN apt-get -y install nodejs
 #RUN dpkg --configure -a
 #RUN fc-cache --force
 #RUN dpkg --configure -a
-#RUN apt-get -y install libvips-tools
+RUN apt-get -y install libvips42 libvips-tools
 #RUN apt-get -y install texlive-xetex
 #RUN apt-get -y install pkg-config
 #RUN dpkg --configure -a
