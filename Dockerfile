@@ -31,8 +31,16 @@ RUN apt-get -y install nodejs
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq texlive-xetex < /dev/null > /dev/null
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq pkg-config < /dev/null > /dev/null
 #RUN dpkg --configure -a
-RUN npm install --save gl --unsafe-perm=true --allow-root
-RUN npm install --save gl-transitions --unsafe-perm=true --allow-root
-RUN npm install --save ffmpeg-concat --unsafe-perm=true --allow-root
-#RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
+
+RUN groupadd -g 1000 ubuntu
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g 1000 -G sudo -u 1000 ubuntu
+RUN touch /home/ubuntu/.sudo_as_admin_successful
+RUN touch /home/ubuntu/.hushlogin
+RUN chown -R ubuntu:ubuntu /home/ubuntu
+USER ubuntu:ubuntu
+
+RUN npm install --save gl
+RUN npm install --save gl-transitions
+RUN npm install --save ffmpeg-concat
 RUN npm i ffmpeg-concat
+
