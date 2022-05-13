@@ -1,4 +1,4 @@
-FROM jrottenberg/ffmpeg:4.1-ubuntu
+FROM jrottenberg/ffmpeg:4.4-ubuntu
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -31,5 +31,6 @@ RUN apt-get -y install nodejs
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq texlive-xetex < /dev/null > /dev/null
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq pkg-config < /dev/null > /dev/null
 #RUN dpkg --configure -a
+RUN npm install -g gl --unsafe-perm=true --allow-root
 RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
 ##RUN npm install --save ffmpeg-concat --unsafe-perm=true --allow-root
