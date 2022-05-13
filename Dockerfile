@@ -38,6 +38,9 @@ RUN touch /home/ubuntu/.sudo_as_admin_successful
 RUN touch /home/ubuntu/.hushlogin
 RUN chown -R ubuntu:ubuntu /home/ubuntu
 USER ubuntu:ubuntu
+WORKDIR /home/ubuntu
+ENV NPM_CONFIG_PREFIX=/home/ubuntu/.npm-global
+ENV PATH=$PATH:/home/ubuntu/.npm-global/bin
 
 RUN npm install --save gl
 RUN npm install --save gl-transitions
