@@ -6,7 +6,7 @@ metadata:
     app: ffmpeg
 spec:
   containers:
-  - image: robinhoodis/ffmpeg:0.0.6
+  - image: robinhoodis/ffmpeg:0.0.7
     command:
       - "sleep"
       - "604800"
