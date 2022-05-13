@@ -11,7 +11,7 @@ RUN dpkg --configure -a
 #RUN apt-get remove libfontconfig1
 #RUN apt-get -y install libfontconfig1-dev 
 RUN apt-get -y install apt-utils 
-RUN apt-get -y install libterm-readline-gnu-perl build-essential sudo cmake python curl dirmngr apt-transport-https lsb-release ca-certificates pkg-config git gcc make yasm autoconf automake cmake libtool checkinstall wget software-properties-common libmp3lame-dev libunwind-dev zlib1g-dev mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev libglew-dev libglfw3-dev libglm-dev libao-dev libmpg123-dev libxt-dev libxi-dev libgl-dev libx11-dev texlive-xetex fonts-dejavu-core ucf libfontconfig1 libfreetype6 libpng16-16
+RUN apt-get -y install libterm-readline-gnu-perl build-essential sudo cmake python3 curl dirmngr apt-transport-https lsb-release ca-certificates pkg-config git gcc make yasm autoconf automake cmake libtool checkinstall wget software-properties-common libmp3lame-dev libunwind-dev zlib1g-dev mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev libglew-dev libglfw3-dev libglm-dev libao-dev libmpg123-dev libxt-dev libxi-dev libgl-dev libx11-dev texlive-xetex fonts-dejavu-core ucf libfontconfig1 libfreetype6 libpng16-16
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get -y install nodejs
