@@ -594,13 +594,15 @@ COPY --from=build /usr/local /usr/local/
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
 USER root
 RUN apt-get -y install apt-utils
-RUN apt-get -y install sudo cmake mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev libglew-dev libglfw3-dev libglm-dev libao-dev libmpg123-dev libxt-dev libxi-dev libgl-dev nodejs python libx11-dev build-essential libvips-tools
+RUN dpkg --configure -a
+RUN apt-get -y install sudo cmake mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev libglew-dev libglfw3-dev libglm-dev libao-dev libmpg123-dev libxt-dev libxi-dev libgl-dev nodejs python libx11-dev build-essential libvips-tools libterm-readline-gnu-perl
 #RUN apt update
 RUN apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq texlive-xetex < /dev/null > /dev/null
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq pkg-config < /dev/null > /dev/null
+RUN dpkg --configure -a
 #RUN apt -y install npm
 RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
 RUN npm install --save ffmpeg-concat
