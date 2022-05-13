@@ -576,10 +576,10 @@ RUN \
         cp -r ${PREFIX}/share/ffmpeg /usr/local/share/ && \
         LD_LIBRARY_PATH=/usr/local/lib ffmpeg -buildconf && \
         cp -r ${PREFIX}/include/libav* ${PREFIX}/include/libpostproc ${PREFIX}/include/libsw* /usr/local/include && \
-        mkdir -p /usr/local/lib/pkgconfig && \
-        for pc in ${PREFIX}/lib/pkgconfig/libav*.pc ${PREFIX}/lib/pkgconfig/libpostproc.pc ${PREFIX}/lib/pkgconfig/libsw*.pc; do \
-          sed "s:${PREFIX}:/usr/local:g" <"$pc" >/usr/local/lib/pkgconfig/"${pc##*/}"; \
-        done
+        mkdir -p /usr/local/lib/pkgconfig
+#        for pc in ${PREFIX}/lib/pkgconfig/libav*.pc ${PREFIX}/lib/pkgconfig/libpostproc.pc ${PREFIX}/lib/pkgconfig/libsw*.pc; do \
+#          sed "s:${PREFIX}:/usr/local:g" <"$pc" >/usr/local/lib/pkgconfig/"${pc##*/}"; \
+#        done
 
 FROM        base AS release
 LABEL       org.opencontainers.image.authors="julien@rottenberg.info" \
@@ -594,12 +594,15 @@ COPY --from=build /usr/local /usr/local/
 
 # Let's make sure the app built correctly
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
-
-RUN apt-get -y install sudo
+USER root
+RUN apt-get -y install sudo cmake  mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev libglew-dev libglfw3-dev libglm-dev libao-dev libmpg123-dev
 #RUN apt update
 RUN apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 
-RUN apt -y install nodejs
+RUN apt-get -y install nodejs python apt-utils libx11-dev libxi-dev build-essential 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq texlive-xetex < /dev/null > /dev/null
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qq pkg-config < /dev/null > /dev/null
 #RUN apt -y install npm
-RUN npm install -g ffmpeg-concat
+RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
+
