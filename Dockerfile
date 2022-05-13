@@ -35,3 +35,4 @@ RUN npm install --save gl --unsafe-perm=true --allow-root
 RUN npm install --save gl-transitions --unsafe-perm=true --allow-root
 RUN npm install --save ffmpeg-concat --unsafe-perm=true --allow-root
 #RUN npm install -g ffmpeg-concat --unsafe-perm=true --allow-root
+RUN npm i ffmpeg-concat
