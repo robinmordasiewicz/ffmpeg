@@ -42,8 +42,8 @@ WORKDIR /home/ubuntu
 ENV NPM_CONFIG_PREFIX=/home/ubuntu/.npm-global
 ENV PATH=$PATH:/home/ubuntu/.npm-global/bin
 
-RUN npm install --save gl
-RUN npm install --save gl-transitions
-RUN npm install --save ffmpeg-concat
-RUN npm i ffmpeg-concat
+#RUN npm install --save gl
+#RUN npm install --save gl-transitions
+#RUN npm install --save ffmpeg-concat
+#RUN npm i ffmpeg-concat
 
